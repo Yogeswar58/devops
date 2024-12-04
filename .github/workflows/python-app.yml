@@ -66,7 +66,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: "us-east-2"
       run: |
-        aws s3 cp app.zip s3://my-app-artifacts/app.zip
+        aws s3 cp app.zip s3://my-app-artifacts-198/app.zip
         # Step 7: Deploy to Elastic Beanstalk
         
     - name: Deploy to Elastic Beanstalk
@@ -78,7 +78,7 @@ jobs:
         aws elasticbeanstalk create-application-version \
           --application-name "devops" \
           --version-label "v1.0" \
-          --source-bundle S3Bucket="my-app-artifacts",S3Key="app.zip"
+          --source-bundle S3Bucket="my-app-artifacts-198",S3Key="app.zip"
         aws elasticbeanstalk update-environment \
           --application-name "devops" \
           --environment-name "devops-env" \
