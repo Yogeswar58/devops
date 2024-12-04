@@ -77,12 +77,12 @@ jobs:
       run: |
         aws elasticbeanstalk create-application-version \
           --application-name "devops" \
-          --version-label "v1.0-$(date +%Y%m%d%H%M%S)" \
+          --version-label "v1.0-${{ github.run_id }}" \
           --source-bundle S3Bucket="my-app-artifacts-198",S3Key="app.zip"
         aws elasticbeanstalk update-environment \
           --application-name "devops" \
           --environment-name "devops-env" \
-          --version-label "v1.0-$(date +%Y%m%d%H%M%S)" \
+          --version-label "v1.0-${{ github.run_id }}"
 
 
 
